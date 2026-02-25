@@ -82,7 +82,6 @@ function buildShop(nav, footer) {
 </head>
 <body data-page="shop">
   <a href="#main" class="skip-link">Skip to main content</a>
-  <div class="cursor" id="cursor"><div class="cursor__ring" id="cursorRing"></div><div class="cursor__dot" id="cursorDot"></div></div>
   <a class="wa-float" href="https://wa.me/233552394434" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="white"><path d="${waPath}"/></svg></a>
   ${nav}
   <main id="main" class="section product-detail">
@@ -154,7 +153,6 @@ function buildShop(nav, footer) {
 </head>
 <body data-page="shop">
   <a href="#main" class="skip-link">Skip to main content</a>
-  <div class="cursor" id="cursor"><div class="cursor__ring" id="cursorRing"></div><div class="cursor__dot" id="cursorDot"></div></div>
   <a class="wa-float" href="https://wa.me/233552394434" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="white"><path d="${waPath}"/></svg></a>
   ${nav}
   <header class="page-hero">
@@ -240,7 +238,6 @@ function buildBlog(nav, footer) {
 </head>
 <body data-page="blog">
   <a href="#main" class="skip-link">Skip to main content</a>
-  <div class="cursor" id="cursor"><div class="cursor__ring" id="cursorRing"></div><div class="cursor__dot" id="cursorDot"></div></div>
   <a class="wa-float" href="https://wa.me/233552394434" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="white"><path d="${waPath}"/></svg></a>
   ${nav}
   <main id="main" class="section" style="background:var(--cream);">
@@ -293,7 +290,6 @@ function buildBlog(nav, footer) {
 </head>
 <body data-page="blog">
   <a href="#main" class="skip-link">Skip to main content</a>
-  <div class="cursor" id="cursor"><div class="cursor__ring" id="cursorRing"></div><div class="cursor__dot" id="cursorDot"></div></div>
   <a class="wa-float" href="https://wa.me/233552394434" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="white"><path d="${waPath}"/></svg></a>
   ${nav}
   <header class="page-hero">

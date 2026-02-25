@@ -1,40 +1,6 @@
 (function () {
   'use strict';
 
-  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var ring = document.getElementById('cursorRing');
-  var dot = document.getElementById('cursorDot');
-  var mx = 0, my = 0, rx = 0, ry = 0;
-  if (ring && dot && !prefersReducedMotion) {
-    document.addEventListener('mousemove', function (e) {
-      mx = e.clientX;
-      my = e.clientY;
-      dot.style.transform = 'translate(' + mx + 'px, ' + my + 'px) translate(-50%, -50%)';
-    });
-    function animRing() {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      ring.style.transform = 'translate(' + rx + 'px, ' + ry + 'px) translate(-50%, -50%)';
-      requestAnimationFrame(animRing);
-    }
-    animRing();
-    document.querySelectorAll('a, button, .product-card, .blog-card, .gallery-item').forEach(function (el) {
-      el.addEventListener('mouseenter', function () {
-        ring.style.width = '56px';
-        ring.style.height = '56px';
-        ring.style.borderColor = 'var(--wine)';
-      });
-      el.addEventListener('mouseleave', function () {
-        ring.style.width = '36px';
-        ring.style.height = '36px';
-        ring.style.borderColor = 'var(--rose)';
-      });
-    });
-  } else if (ring && dot) {
-    ring.style.display = 'none';
-    dot.style.display = 'none';
-  }
-
   var nav = document.getElementById('mainNav');
   if (nav) {
     window.addEventListener('scroll', function () {
