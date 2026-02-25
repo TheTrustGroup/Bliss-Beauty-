@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop — Bliss Beauty Plus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/main.css"/>
+  <style>
+    .products-wrap { background: var(--cream); }
+    .shop-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+    .filter-group label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--wine);
+      margin-right: 8px;
+    }
+    .filter-btn {
+      padding: 10px 20px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      background: var(--white);
+      border: 1px solid #E8DDD9;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--wine);
+      border-color: var(--wine);
+      color: var(--cream);
+    }
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    .product-card {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 0 4px 24px rgba(107,45,62,0.08);
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-deep);
+    }
+    .product-card a { display: block; }
+    .product-img {
+      aspect-ratio: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-img-bg {
+      position: absolute; inset: 0;
+      transition: transform 0.7s ease;
+    }
+    .product-card:hover .product-img-bg { transform: scale(1.06); }
+    .product-img-bg.p1 { background: linear-gradient(135deg, #F2E5D8, #E8C8B8, #C4826A); }
+    .product-img-bg.p2 { background: linear-gradient(135deg, #6B2D3E, #C4826A, #E8C8B8); }
+    .product-img-bg.p3 { background: linear-gradient(135deg, #C9A96E, #E8C8B8, #FAF6F1); }
+    .product-img-bg.p4 { background: linear-gradient(135deg, #E8C8B8, #6B2D3E, #1A1015); }
+    .product-img-bg.p5 { background: linear-gradient(135deg, #6B2D3E, #1A1015, #C4826A); }
+    .product-img-bg.p6 { background: linear-gradient(135deg, #C4826A, #E8C8B8, #C9A96E); }
+    .product-tags {
+      position: absolute;
+      top: 16px; left: 16px;
+      display: flex; flex-wrap: wrap; gap: 8px;
+      z-index: 2;
+    }
+    .product-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 100px;
+      background: var(--white);
+      color: var(--wine);
+      box-shadow: var(--shadow-soft);
+    }
+    .product-tag.new { background: var(--gold); color: var(--charcoal); }
+    .product-tag.vegan { background: var(--wine); color: var(--cream); }
+    .product-info { padding: 24px; }
+    .product-category {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 8px;
+    }
+    .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      color: var(--wine);
+      margin-bottom: 8px;
+    }
+    .product-desc { font-size: 0.82rem; color: #888; line-height: 1.6; margin-bottom: 16px; }
+    .product-price { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--wine); font-weight: 500; }
+    @media (max-width: 768px) {
+      .shop-toolbar { flex-direction: column; align-items: flex-start; }
+      .shop-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor" id="cursor">
+    <div class="cursor__ring" id="cursorRing"></div>
+    <div class="cursor__dot" id="cursorDot"></div>
+  </div>
+  <a class="wa-float" href="https://wa.me/233552394434" target="_blank" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <nav id="mainNav">
+    <a href="../index.html" class="nav-logo">Bliss Beauty<span>+</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="index.html" class="active">Shop</a></li>
+      <li><a href="../index.html#values">Values</a></li>
+      <li><a href="../index.html#testimonials">Reviews</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+      <li><a href="../blog/index.html">Blog</a></li>
+      <li><a href="../gallery/index.html">Gallery</a></li>
+    </ul>
+    <a href="https://wa.me/233552394434" class="nav-cta" target="_blank">Shop Now</a>
+    <div class="hamburger" id="hamburger" onclick="openMenu()"><span></span><span></span><span></span></div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <span class="close-btn" onclick="closeMenu()">✕</span>
+    <a href="../index.html#about" onclick="closeMenu()">About</a>
+    <a href="index.html" onclick="closeMenu()">Shop</a>
+    <a href="../index.html#values" onclick="closeMenu()">Values</a>
+    <a href="../index.html#testimonials" onclick="closeMenu()">Reviews</a>
+    <a href="../index.html#contact" onclick="closeMenu()">Contact</a>
+    <a href="../blog/index.html" onclick="closeMenu()">Blog</a>
+    <a href="../gallery/index.html" onclick="closeMenu()">Gallery</a>
+    <a href="https://wa.me/233552394434" target="_blank" onclick="closeMenu()">Shop Now</a>
+  </div>
+
+  <header class="page-hero">
+    <div class="section-label reveal">Our Collections</div>
+    <h1 class="section-title reveal reveal-delay-1">Shop <em>All Products</em></h1>
+    <p class="reveal reveal-delay-2" style="font-size:1rem;line-height:1.8;color:#4a3030;max-width:520px;">Curated vegan and cruelty-free beauty. Filter by category or explore everything.</p>
+  </header>
+
+  <div class="section products-wrap">
+    <div class="shop-toolbar">
+      <div class="filter-group">
+        <label>Category</label>
+        <button type="button" class="filter-btn active" data-filter="all">All</button>
+        <button type="button" class="filter-btn" data-filter="skincare">Skincare</button>
+        <button type="button" class="filter-btn" data-filter="makeup">Makeup</button>
+        <button type="button" class="filter-btn" data-filter="body">Body</button>
+        <button type="button" class="filter-btn" data-filter="hair">Hair</button>
+      </div>
+    </div>
+    <div class="shop-grid" id="shopGrid">
+      <article class="product-card reveal" data-category="skincare">
+        <a href="premium-moisturiser.html">
+          <div class="product-img">
+            <div class="product-img-bg p1"></div>
+            <div class="product-tags">
+              <span class="product-tag vegan">Vegan</span>
+              <span class="product-tag new">New</span>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Skincare</div>
+            <h2 class="product-name">Premium Moisturiser</h2>
+            <p class="product-desc">Rich, nourishing formula for all skin types. Cruelty-free.</p>
+            <div class="product-price">GH₵ 120</div>
+          </div>
+        </a>
+      </article>
+      <article class="product-card reveal reveal-delay-1" data-category="makeup">
+        <a href="luxury-lip-collection.html">
+          <div class="product-img">
+            <div class="product-img-bg p2"></div>
+            <div class="product-tags"><span class="product-tag vegan">Vegan</span></div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Makeup</div>
+            <h2 class="product-name">Luxury Lip Collection</h2>
+            <p class="product-desc">Long-wear lip colours for melanin-rich skin.</p>
+            <div class="product-price">GH₵ 85</div>
+          </div>
+        </a>
+      </article>
+      <article class="product-card reveal reveal-delay-2" data-category="body">
+        <a href="body-butter-essentials.html">
+          <div class="product-img">
+            <div class="product-img-bg p3"></div>
+            <div class="product-tags"><span class="product-tag new">Bestseller</span></div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Body Care</div>
+            <h2 class="product-name">Body Butter Essentials</h2>
+            <p class="product-desc">Indulgent body butters for head-to-toe glow.</p>
+            <div class="product-price">GH₵ 95</div>
+          </div>
+        </a>
+      </article>
+      <article class="product-card reveal reveal-delay-3" data-category="hair">
+        <a href="hair-luxe-treatment.html">
+          <div class="product-img">
+            <div class="product-img-bg p4"></div>
+            <div class="product-tags"><span class="product-tag vegan">Vegan</span></div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Hair Care</div>
+            <h2 class="product-name">Hair Luxe Treatment</h2>
+            <p class="product-desc">Strengthen and define natural hair.</p>
+            <div class="product-price">GH₵ 110</div>
+          </div>
+        </a>
+      </article>
+      <article class="product-card reveal" data-category="skincare">
+        <a href="premium-moisturiser.html">
+          <div class="product-img">
+            <div class="product-img-bg p5"></div>
+            <div class="product-tags"><span class="product-tag vegan">Vegan</span></div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Skincare</div>
+            <h2 class="product-name">Vitamin C Serum</h2>
+            <p class="product-desc">Brightening serum for even tone and radiance.</p>
+            <div class="product-price">GH₵ 145</div>
+          </div>
+        </a>
+      </article>
+      <article class="product-card reveal reveal-delay-1" data-category="makeup">
+        <a href="luxury-lip-collection.html">
+          <div class="product-img">
+            <div class="product-img-bg p6"></div>
+            <div class="product-tags"><span class="product-tag new">New</span></div>
+          </div>
+          <div class="product-info">
+            <div class="product-category">Makeup</div>
+            <h2 class="product-name">Eyeshadow Palette</h2>
+            <p class="product-desc">Warm neutrals and rich mattes for every look.</p>
+            <div class="product-price">GH₵ 165</div>
+          </div>
+        </a>
+      </article>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Bliss Beauty<span>+</span></div>
+        <p class="footer-tagline">Premium cruelty-free and vegan beauty. East Legon, Accra.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about/index.html">About</a></li>
+          <li><a href="index.html">Shop</a></li>
+          <li><a href="../blog/index.html">Blog</a></li>
+          <li><a href="../gallery/index.html">Gallery</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Collections</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Skincare</a></li>
+          <li><a href="index.html">Makeup</a></li>
+          <li><a href="index.html">Body Care</a></li>
+          <li><a href="index.html">Hair Care</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="tel:+233552394434">+233 552 394 434</a></li>
+          <li><a href="https://wa.me/233552394434" target="_blank">WhatsApp</a></li>
+          <li><a href="https://www.instagram.com/blissbeautyplus" target="_blank">@blissbeautyplus</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Bliss Beauty Plus. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    (function () {
+      var btns = document.querySelectorAll('.filter-btn');
+      var cards = document.querySelectorAll('#shopGrid .product-card');
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var filter = btn.getAttribute('data-filter');
+          btns.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          cards.forEach(function (card) {
+            var cat = card.getAttribute('data-category');
+            card.style.display = (filter === 'all' || cat === filter) ? '' : 'none';
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

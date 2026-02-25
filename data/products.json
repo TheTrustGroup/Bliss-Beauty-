@@ -1,0 +1,74 @@
+[
+  {
+    "slug": "premium-moisturiser",
+    "name": "Premium Moisturiser",
+    "category": "Skincare",
+    "categorySlug": "skincare",
+    "price": "120",
+    "shortDesc": "Rich, nourishing formula for all skin types. Cruelty-free.",
+    "longDesc": "A rich, nourishing daily moisturiser formulated for all skin types. Enriched with plant-based actives and free from parabens, sulphates and animal-derived ingredients. Perfect for Ghana's climate — absorbs quickly without greasiness while locking in moisture for a healthy, radiant glow.",
+    "tags": ["Vegan", "Cruelty Free", "New"],
+    "imgClass": "p1",
+    "waMessage": "Hi Bliss Beauty Plus! I would like to order \"Premium Moisturiser\" (GH₵ 120)."
+  },
+  {
+    "slug": "luxury-lip-collection",
+    "name": "Luxury Lip Collection",
+    "category": "Makeup",
+    "categorySlug": "makeup",
+    "price": "85",
+    "shortDesc": "Long-wear lip colours for melanin-rich skin.",
+    "longDesc": "Long-wear lip colours designed for melanin-rich skin. Vegan, cruelty-free formulas in matte and satin finishes.",
+    "tags": ["Vegan"],
+    "imgClass": "p2",
+    "waMessage": "Hi Bliss Beauty Plus! I would like to order \"Luxury Lip Collection\" (GH₵ 85)."
+  },
+  {
+    "slug": "body-butter-essentials",
+    "name": "Body Butter Essentials",
+    "category": "Body Care",
+    "categorySlug": "body",
+    "price": "95",
+    "shortDesc": "Indulgent body butters for head-to-toe glow.",
+    "longDesc": "Indulgent body butters for head-to-toe glow. Vegan and cruelty-free.",
+    "tags": ["Bestseller"],
+    "imgClass": "p3",
+    "waMessage": "Hi Bliss Beauty Plus! I would like to order \"Body Butter Essentials\" (GH₵ 95)."
+  },
+  {
+    "slug": "hair-luxe-treatment",
+    "name": "Hair Luxe Treatment",
+    "category": "Hair Care",
+    "categorySlug": "hair",
+    "price": "110",
+    "shortDesc": "Strengthen and define natural hair.",
+    "longDesc": "Strengthen and beautify your natural hair. Vegan treatments, oils and conditioners for healthy, defined hair.",
+    "tags": ["Vegan"],
+    "imgClass": "p4",
+    "waMessage": "Hi Bliss Beauty Plus! I would like to order \"Hair Luxe Treatment\" (GH₵ 110)."
+  },
+  {
+    "slug": "vitamin-c-serum",
+    "name": "Vitamin C Serum",
+    "category": "Skincare",
+    "categorySlug": "skincare",
+    "price": "145",
+    "shortDesc": "Brightening serum for even tone and radiance.",
+    "longDesc": "Vitamin C serum for brighter, more even skin. Vegan and cruelty-free.",
+    "tags": ["Vegan"],
+    "imgClass": "p5",
+    "waMessage": "Hi Bliss Beauty Plus! I would like to order \"Vitamin C Serum\" (GH₵ 145)."
+  },
+  {
+    "slug": "eyeshadow-palette",
+    "name": "Eyeshadow Palette",
+    "category": "Makeup",
+    "categorySlug": "makeup",
+    "price": "165",
+    "shortDesc": "Warm neutrals and rich mattes for every look.",
+    "longDesc": "Warm neutrals and rich mattes for every look. Vegan and cruelty-free.",
+    "tags": ["New"],
+    "imgClass": "p6",
+    "waMessage": "Hi Bliss Beauty Plus! I would like to order \"Eyeshadow Palette\" (GH₵ 165)."
+  }
+]

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Bliss Beauty Plus</title>
+  <meta name="description" content="Our story, timeline, team and mission. Bliss Beauty Plus — vegan and cruelty-free beauty in East Legon, Accra."/>
+  <link rel="canonical" href="https://blissbeautyplus.com/about/"/>
+  <meta property="og:title" content="About — Bliss Beauty Plus"/>
+  <meta property="og:description" content="Our story, timeline, team and mission. Vegan and cruelty-free beauty in East Legon, Accra."/>
+  <meta property="og:url" content="https://blissbeautyplus.com/about/"/>
+  <meta property="og:type" content="website"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/main.css"/>
+  <style>
+    .about-story { background: var(--white); }
+    .about-story p { font-size: 1rem; line-height: 1.9; color: #4a3030; margin-bottom: 20px; }
+    .timeline { background: var(--cream); }
+    .timeline-list { max-width: 720px; margin-top: 48px; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 32px;
+      padding-bottom: 40px;
+      border-left: 2px solid var(--blush);
+      margin-left: 50px;
+      padding-left: 32px;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -7px;
+      top: 4px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--rose);
+    }
+    .timeline-year { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 500; color: var(--wine); }
+    .timeline-title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; color: var(--wine); margin-bottom: 8px; }
+    .timeline-desc { font-size: 0.9rem; line-height: 1.75; color: #555; }
+    .mission-block { background: var(--wine); color: var(--cream); }
+    .mission-block .section-label { color: var(--gold); }
+    .mission-block .section-label::before { background: var(--gold); }
+    .mission-block .section-title { color: var(--cream); }
+    .mission-block .section-title em { color: var(--blush); }
+    .mission-block p { font-size: 1rem; line-height: 1.9; color: rgba(250,246,241,0.85); margin-bottom: 20px; }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .team-card {
+      text-align: center;
+      background: var(--white);
+      border-radius: 4px;
+      padding: 32px 24px;
+      box-shadow: 0 4px 24px rgba(107,45,62,0.08);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); }
+    .team-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      background: linear-gradient(135deg, var(--blush), var(--rose));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--white);
+    }
+    .team-name { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--wine); margin-bottom: 4px; }
+    .team-role { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); }
+    .team-section { background: var(--cream); }
+    @media (max-width: 768px) {
+      .timeline-item { grid-template-columns: 1fr; margin-left: 24px; padding-left: 24px; }
+    }
+  </style>
+</head>
+<body data-page="about">
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <div class="cursor" id="cursor">
+    <div class="cursor__ring" id="cursorRing"></div>
+    <div class="cursor__dot" id="cursorDot"></div>
+  </div>
+  <a class="wa-float" href="https://wa.me/233552394434" target="_blank" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <include src="../partials/nav.html"></include>
+
+  <header class="page-hero" id="main">
+    <div class="section-label reveal">Our Story</div>
+    <h1 class="section-title reveal reveal-delay-1">Where Beauty Meets <em>Conscience</em></h1>
+    <p class="reveal reveal-delay-2" style="font-size:1rem;line-height:1.8;color:#4a3030;max-width:560px;">Bliss Beauty Plus was founded to make luxury, ethical beauty accessible to every woman in Ghana and beyond.</p>
+  </header>
+
+  <section class="section about-story">
+    <div class="section-label reveal">Brand Story</div>
+    <h2 class="section-title reveal reveal-delay-1">The <em>Beginning</em></h2>
+    <p class="reveal reveal-delay-2">
+      Bliss Beauty Plus was founded with a singular vision — to make luxury beauty accessible to every woman in Ghana and beyond, without compromising on ethics or quality.
+    </p>
+    <p class="reveal reveal-delay-3">
+      Based in the heart of East Legon, Accra, we curate and offer premium cosmetics and personal care products that are 100% vegan, cruelty-free, and formulated to celebrate diverse skin tones and types.
+    </p>
+  </section>
+
+  <section class="section timeline">
+    <div class="section-label reveal">Timeline</div>
+    <h2 class="section-title reveal reveal-delay-1">Our <em>Journey</em></h2>
+    <div class="timeline-list">
+      <div class="timeline-item reveal">
+        <span class="timeline-year">2020</span>
+        <div>
+          <h3 class="timeline-title">Launch</h3>
+          <p class="timeline-desc">Bliss Beauty Plus opens in East Legon, Accra, with a small curated range of vegan and cruelty-free beauty products.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-1">
+        <span class="timeline-year">2021</span>
+        <div>
+          <h3 class="timeline-title">Community Growth</h3>
+          <p class="timeline-desc">We hit 1,000 followers and expand our skincare and makeup collections to better serve Ghanaian skin types.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-2">
+        <span class="timeline-year">2023</span>
+        <div>
+          <h3 class="timeline-title">70+ Brands</h3>
+          <p class="timeline-desc">Partnership with over 70 premium brands; 2,000+ happy clients and a growing online presence.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-3">
+        <span class="timeline-year">Today</span>
+        <div>
+          <h3 class="timeline-title">Inspiring Confidence</h3>
+          <p class="timeline-desc">Continuing to enhance beauty through ethical luxury — one product and one customer at a time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section mission-block">
+    <div class="section-label reveal">Mission</div>
+    <h2 class="section-title reveal reveal-delay-1">Our <em>Promise</em></h2>
+    <p class="reveal reveal-delay-2">
+      We believe beauty should never come at the cost of animals or the planet. Every product we stock is 100% vegan and cruelty-free. We are committed to sourcing only premium, high-performance formulas that deliver real results — because you deserve the very best.
+    </p>
+  </section>
+
+  <section class="section team-section">
+    <div class="section-label reveal">The Team</div>
+    <h2 class="section-title reveal reveal-delay-1">People Behind <em>Bliss Beauty+</em></h2>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-avatar">A</div>
+        <div class="team-name">Abena</div>
+        <div class="team-role">Founder</div>
+      </div>
+      <div class="team-card reveal reveal-delay-1">
+        <div class="team-avatar">E</div>
+        <div class="team-name">Efua</div>
+        <div class="team-role">Operations</div>
+      </div>
+      <div class="team-card reveal reveal-delay-2">
+        <div class="team-avatar">S</div>
+        <div class="team-name">Selasie</div>
+        <div class="team-role">Customer Care</div>
+      </div>
+    </div>
+  </section>
+
+  <include src="../partials/footer.html"></include>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

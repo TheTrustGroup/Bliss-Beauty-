@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bliss Beauty Plus — Inspiring Confidence &amp; Enhancing Beauty</title>
+  <meta name="description" content="Luxury cruelty-free and vegan beauty products in East Legon, Accra. Skincare, makeup, body and hair care for every skin type."/>
+  <link rel="canonical" href="https://blissbeautyplus.com/"/>
+  <meta property="og:title" content="Bliss Beauty Plus — Inspiring Confidence &amp; Enhancing Beauty"/>
+  <meta property="og:description" content="Luxury cruelty-free and vegan beauty products in East Legon, Accra."/>
+  <meta property="og:url" content="https://blissbeautyplus.com/"/>
+  <meta property="og:type" content="website"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"/>
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────── */
+    :root {
+      --cream:   #FAF6F1;
+      --blush:   #E8C8B8;
+      --rose:    #C4826A;
+      --wine:    #6B2D3E;
+      --charcoal:#1A1015;
+      --gold:    #C9A96E;
+      --white:   #FFFFFF;
+      --glass-bg: rgba(255,255,255,0.10);
+      --glass-border: rgba(255,255,255,0.22);
+      --glass-blur: blur(18px);
+      --shadow-soft: 0 8px 40px rgba(107,45,62,0.12);
+      --shadow-deep: 0 20px 80px rgba(107,45,62,0.22);
+      --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ─── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+      cursor: none;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ─── CUSTOM CURSOR ──────────────────────────────── */
+    .cursor {
+      position: fixed; top: 0; left: 0; z-index: 9999;
+      pointer-events: none;
+    }
+    .cursor__dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--rose);
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s;
+    }
+    .cursor__ring {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid var(--rose);
+      transform: translate(-50%, -50%);
+      transition: transform 0.18s ease, width 0.3s, height 0.3s, border-color 0.3s;
+    }
+    body:hover .cursor__dot { transform: translate(-50%, -50%) scale(1); }
+    a:hover ~ .cursor .cursor__ring,
+    button:hover ~ .cursor .cursor__ring { width: 56px; height: 56px; }
+
+    /* ─── NAV ────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 24px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.5s, box-shadow 0.5s, padding 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(250,246,241,0.88);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      box-shadow: 0 2px 30px rgba(107,45,62,0.08);
+      padding: 16px 60px;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--wine);
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex; gap: 40px; list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 1px; background: var(--rose);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 12px 28px;
+      border: 1px solid var(--wine);
+      color: var(--wine);
+      border-radius: 2px;
+      transition: background var(--transition), color var(--transition);
+    }
+    .nav-cta:hover { background: var(--wine); color: var(--white); }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 1.5px; background: var(--charcoal); transition: var(--transition); }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed; inset: 0; z-index: 999;
+      background: var(--wine);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 36px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      color: var(--cream);
+      letter-spacing: 0.04em;
+    }
+    .mobile-menu .close-btn {
+      position: absolute; top: 28px; right: 36px;
+      font-size: 2rem; color: var(--cream); cursor: pointer;
+    }
+
+    /* ─── HERO ───────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(135deg, #FAF6F1 0%, #F2E5D8 50%, #E8C8B8 100%);
+    }
+    .orb {
+      position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.5; pointer-events: none;
+    }
+    .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, #E8C8B8, transparent); top: -100px; right: -100px; animation: floatOrb 10s ease-in-out infinite alternate; }
+    .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, #C4826A44, transparent); bottom: 0; left: 0; animation: floatOrb 14s ease-in-out infinite alternate-reverse; }
+    .orb-3 { width: 300px; height: 300px; background: radial-gradient(circle, #C9A96E33, transparent); top: 40%; left: 40%; animation: floatOrb 8s ease-in-out infinite alternate; }
+    @keyframes floatOrb { from { transform: translate(0,0) scale(1); } to { transform: translate(30px, -30px) scale(1.08); } }
+
+    .hero-left {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 140px 80px 80px 80px;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 24px;
+      display: flex; align-items: center; gap: 12px;
+      animation: fadeUp 1s ease both 0.2s;
+    }
+    .hero-eyebrow::before {
+      content: ''; width: 40px; height: 1px; background: var(--rose);
+    }
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 5.5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--wine);
+      margin-bottom: 28px;
+      animation: fadeUp 1s ease both 0.4s;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--rose);
+    }
+    .hero-desc {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: #4a3030;
+      max-width: 400px;
+      margin-bottom: 48px;
+      animation: fadeUp 1s ease both 0.6s;
+    }
+    .hero-actions {
+      display: flex; gap: 20px; align-items: center;
+      animation: fadeUp 1s ease both 0.8s;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--wine);
+      color: var(--cream);
+      padding: 16px 36px;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border: none; cursor: pointer;
+      border-radius: 2px;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      font-family: 'Jost', sans-serif;
+    }
+    .btn-primary:hover {
+      background: var(--rose);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(196,130,106,0.4);
+    }
+    .btn-primary svg { transition: transform var(--transition); }
+    .btn-primary:hover svg { transform: translateX(4px); }
+    .btn-ghost {
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--wine);
+      border-bottom: 1px solid var(--wine);
+      padding-bottom: 4px;
+      transition: color var(--transition), border-color var(--transition);
+    }
+    .btn-ghost:hover { color: var(--rose); border-color: var(--rose); }
+
+    .hero-badges {
+      display: flex; gap: 12px; margin-top: 64px;
+      animation: fadeUp 1s ease both 1s;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--wine);
+    }
+    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--rose); }
+
+    .hero-right {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; justify-content: center;
+      padding: 120px 80px 80px 40px;
+    }
+    .hero-visual {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+      animation: fadeUp 1.2s ease both 0.3s;
+    }
+    .hero-img-main {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 4px;
+      background: linear-gradient(160deg, #E8C8B8 0%, #C4826A 60%, #6B2D3E 100%);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-deep);
+    }
+    .hero-img-main::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80px 200px at 30% 60%, rgba(255,255,255,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50px 50px at 70% 40%, rgba(255,255,255,0.22) 0%, transparent 70%),
+        radial-gradient(ellipse 120px 120px at 50% 80%, rgba(107,45,62,0.3) 0%, transparent 70%);
+    }
+    .hero-img-main::after {
+      content: 'BB+';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.1em;
+    }
+
+    .hero-float-card {
+      position: absolute;
+      bottom: -24px; left: -40px;
+      background: var(--white);
+      border-radius: 4px;
+      padding: 20px 24px;
+      box-shadow: var(--shadow-soft);
+      min-width: 180px;
+      animation: floatCard 6s ease-in-out infinite;
+    }
+    @keyframes floatCard { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .float-card-label { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: #999; margin-bottom: 6px; }
+    .float-card-value { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--wine); font-weight: 600; }
+    .float-card-sub { font-size: 0.72rem; color: var(--rose); margin-top: 2px; }
+
+    .hero-float-badge {
+      position: absolute;
+      top: 40px; right: -30px;
+      background: var(--wine);
+      color: var(--cream);
+      padding: 14px 18px;
+      border-radius: 4px;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+      animation: floatCard 8s ease-in-out infinite reverse;
+    }
+    .hero-float-badge strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 2px; }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px; left: 80px;
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      animation: fadeUp 1s ease both 1.4s;
+      z-index: 2;
+    }
+    .scroll-line {
+      width: 1px; height: 50px; background: linear-gradient(to bottom, transparent, var(--rose));
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine { 0%,100% { opacity: 0; transform: scaleY(0); transform-origin: top; } 50% { opacity: 1; transform: scaleY(1); } }
+
+    /* ─── TICKER ─────────────────────────────────────── */
+    .ticker-wrap {
+      background: var(--wine);
+      color: var(--cream);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-track {
+      display: inline-flex; gap: 0;
+      animation: ticker 22s linear infinite;
+    }
+    .ticker-item {
+      display: inline-flex; align-items: center; gap: 28px;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding-right: 60px;
+    }
+    .ticker-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── ABOUT ──────────────────────────────────────── */
+    .section { padding: 120px 80px; }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-label::before { content: ''; width: 32px; height: 1px; background: var(--rose); }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 300;
+      line-height: 1.12;
+      color: var(--wine);
+      margin-bottom: 32px;
+    }
+    .section-title em { font-style: italic; color: var(--rose); }
+
+    .about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: #4a3030;
+      margin-bottom: 20px;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .stat-card {
+      background: var(--cream);
+      border-radius: 4px;
+      padding: 28px;
+      border-left: 3px solid var(--rose);
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 400;
+      color: var(--wine);
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: #999; margin-top: 6px; }
+
+    .about-visual { position: relative; }
+    .about-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: 4px;
+      background: linear-gradient(160deg, var(--blush) 0%, var(--rose) 70%, var(--wine) 100%);
+      box-shadow: var(--shadow-deep);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-img::before {
+      content: '✦';
+      position: absolute;
+      bottom: 30px; right: 30px;
+      font-size: 5rem;
+      color: rgba(255,255,255,0.15);
+    }
+    .about-accent {
+      position: absolute;
+      top: -24px; right: -24px;
+      width: 120px; height: 120px;
+      border: 1px solid var(--blush);
+      border-radius: 4px;
+    }
+
+    .pillars { display: flex; gap: 24px; margin-top: 48px; }
+    .pillar {
+      flex: 1;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: var(--glass-blur);
+      padding: 24px;
+      border-radius: 4px;
+      text-align: center;
+    }
+    .pillar-icon { width: 32px; height: 32px; margin: 0 auto 14px; display: flex; align-items: center; justify-content: center; }
+    .pillar-name { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--wine); }
+
+    /* ─── PRODUCTS ───────────────────────────────────── */
+    .products { background: var(--cream); }
+    .products-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .product-card {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 0 4px 24px rgba(107,45,62,0.08);
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-deep);
+    }
+    .product-card:first-child { grid-column: span 2; }
+    .product-img { aspect-ratio: 16/9; position: relative; overflow: hidden; }
+    .product-card:first-child .product-img { aspect-ratio: 21/9; }
+    .product-img-bg { position: absolute; inset: 0; transition: transform 0.7s ease; }
+    .product-card:hover .product-img-bg { transform: scale(1.06); }
+    .product-img-bg.p1 { background: linear-gradient(135deg, #F2E5D8, #E8C8B8, #C4826A); }
+    .product-img-bg.p2 { background: linear-gradient(135deg, #6B2D3E, #C4826A, #E8C8B8); }
+    .product-img-bg.p3 { background: linear-gradient(135deg, #C9A96E, #E8C8B8, #FAF6F1); }
+    .product-img-bg.p4 { background: linear-gradient(135deg, #E8C8B8, #6B2D3E, #1A1015); }
+    .product-img-label {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300;
+      color: rgba(255,255,255,0.28); white-space: nowrap; letter-spacing: 0.06em;
+    }
+    .product-card:first-child .product-img-label { font-size: 5rem; }
+    .product-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(107,45,62,0.85), transparent);
+      padding: 32px 24px 24px;
+      transform: translateY(100%);
+      transition: transform var(--transition);
+    }
+    .product-card:hover .product-overlay { transform: translateY(0); }
+    .product-overlay-text { color: var(--cream); font-size: 0.78rem; line-height: 1.6; margin-bottom: 16px; }
+    .product-overlay-btn { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 3px; }
+    .product-info { padding: 24px; }
+    .product-category { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); margin-bottom: 8px; }
+    .product-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--wine); margin-bottom: 6px; }
+    .product-desc { font-size: 0.82rem; color: #888; line-height: 1.6; }
+
+    /* ─── VALUES ─────────────────────────────────────── */
+    .values { background: var(--wine); color: var(--cream); }
+    .values .section-label { color: var(--gold); }
+    .values .section-label::before { background: var(--gold); }
+    .values .section-title { color: var(--cream); }
+    .values .section-title em { color: var(--blush); }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 64px; background: rgba(255,255,255,0.08); }
+    .value-card {
+      background: var(--wine);
+      padding: 56px 48px;
+      position: relative;
+      overflow: hidden;
+      transition: background var(--transition);
+    }
+    .value-card:hover { background: rgba(255,255,255,0.06); }
+    .value-num { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: rgba(255,255,255,0.06); position: absolute; top: 24px; right: 28px; line-height: 1; }
+    .value-icon { width: 32px; height: 32px; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; }
+    .value-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--gold); margin-bottom: 16px; }
+    .value-text { font-size: 0.88rem; line-height: 1.8; color: rgba(250,246,241,0.7); }
+
+    /* ─── TESTIMONIALS ───────────────────────────────── */
+    .testimonials { background: var(--white); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 64px; }
+    .testimonial-card {
+      background: var(--cream);
+      border-radius: 4px;
+      padding: 40px 36px;
+      position: relative;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); }
+    .testimonial-card.featured { background: var(--wine); color: var(--cream); }
+    .quote-mark { font-family: 'Cormorant Garamond', serif; font-size: 4rem; line-height: 0.5; color: var(--rose); margin-bottom: 24px; }
+    .testimonial-card.featured .quote-mark { color: var(--gold); }
+    .testimonial-text { font-size: 0.92rem; line-height: 1.8; color: #555; font-style: italic; margin-bottom: 28px; }
+    .testimonial-card.featured .testimonial-text { color: rgba(250,246,241,0.85); }
+    .testimonial-author { display: flex; align-items: center; gap: 14px; }
+    .author-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blush), var(--rose));
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--white);
+    }
+    .author-name { font-size: 0.82rem; font-weight: 500; color: var(--charcoal); letter-spacing: 0.04em; }
+    .testimonial-card.featured .author-name { color: var(--cream); }
+    .author-location { font-size: 0.7rem; color: #aaa; letter-spacing: 0.08em; }
+    .testimonial-card.featured .author-location { color: rgba(250,246,241,0.5); }
+    .stars { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 16px; }
+
+    /* ─── CONTACT ────────────────────────────────────── */
+    .contact { background: var(--cream); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .contact-detail { display: flex; gap: 20px; margin-bottom: 36px; align-items: flex-start; }
+    .contact-icon {
+      width: 48px; height: 48px; border-radius: 4px;
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-soft);
+      flex-shrink: 0;
+    }
+    .contact-detail-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); margin-bottom: 6px; }
+    .contact-detail-value { font-size: 0.95rem; color: var(--charcoal); line-height: 1.6; }
+    .contact-detail-value a:hover { color: var(--rose); }
+    .form-group { margin-bottom: 24px; }
+    .form-group label { display: block; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--wine); margin-bottom: 10px; }
+    .form-control {
+      width: 100%;
+      background: var(--white);
+      border: 1px solid #E8DDD9;
+      border-radius: 2px;
+      padding: 14px 18px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+    }
+    .form-control:focus { border-color: var(--rose); box-shadow: 0 0 0 3px rgba(196,130,106,0.12); }
+    textarea.form-control { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .social-bar { display: flex; gap: 16px; margin-top: 48px; }
+    .social-link {
+      width: 44px; height: 44px;
+      border: 1px solid var(--blush);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      color: var(--wine);
+      transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
+    }
+    .social-link:hover { background: var(--wine); border-color: var(--wine); color: var(--cream); transform: translateY(-2px); }
+
+    .map-section { background: var(--white); padding: 0 80px 80px; }
+    .map-embed {
+      width: 100%; height: 380px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, #F2E5D8 0%, #E8C8B8 50%, #C4826A 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+    .map-embed iframe { width: 100%; height: 100%; border: none; border-radius: 4px; }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer { background: var(--charcoal); color: rgba(250,246,241,0.7); padding: 80px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 60px; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--cream); margin-bottom: 16px; }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline { font-size: 0.82rem; line-height: 1.8; margin-bottom: 28px; color: rgba(250,246,241,0.55); }
+    .footer-col-title { font-size: 0.65rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { font-size: 0.85rem; color: rgba(250,246,241,0.55); transition: color var(--transition); }
+    .footer-links a:hover { color: var(--cream); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.72rem;
+      color: rgba(250,246,241,0.35);
+    }
+    .footer-bottom-links { display: flex; gap: 24px; }
+    .footer-bottom-links a { color: rgba(250,246,241,0.35); transition: color var(--transition); }
+    .footer-bottom-links a:hover { color: var(--cream); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .glass-panel {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-radius: 4px;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 140px 40px 60px; }
+      .hero-right { display: none; }
+      .scroll-hint { left: 40px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-visual { display: none; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .product-card:first-child { grid-column: span 2; }
+      .values-grid { grid-template-columns: 1fr; gap: 2px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .section { padding: 80px 40px; }
+      .map-section { padding: 0 40px 60px; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 14px 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-left { padding: 120px 24px 60px; }
+      .scroll-hint { display: none; }
+      .section { padding: 64px 24px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .product-card:first-child { grid-column: span 1; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .hero-badges { flex-wrap: wrap; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .map-section { padding: 0 24px 48px; }
+      footer { padding: 56px 24px; }
+      .pillars { flex-direction: column; }
+    }
+
+    .wa-float {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      z-index: 900;
+      width: 56px; height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: white;
+      box-shadow: 0 8px 30px rgba(37,211,102,0.4);
+      transition: transform var(--transition), box-shadow var(--transition);
+      animation: waPulse 3s ease-in-out infinite;
+    }
+    .wa-float:hover { transform: scale(1.12); box-shadow: 0 12px 40px rgba(37,211,102,0.55); }
+    @keyframes waPulse { 0%,100% { box-shadow: 0 8px 30px rgba(37,211,102,0.4); } 50% { box-shadow: 0 8px 50px rgba(37,211,102,0.7); } }
+    .wa-float svg { width: 28px; height: 28px; }
+
+    .view-all {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--rose);
+      border-bottom: 1px solid var(--rose);
+      padding-bottom: 3px;
+      transition: gap var(--transition);
+    }
+    .view-all:hover { gap: 14px; }
+  </style>
+</head>
+<body data-page="home">
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <div class="cursor" id="cursor">
+    <div class="cursor__ring" id="cursorRing"></div>
+    <div class="cursor__dot" id="cursorDot"></div>
+  </div>
+
+  <a class="wa-float" href="https://wa.me/233552394434" target="_blank" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+  </a>
+
+  <include src="partials/nav.html"></include>
+
+  <section class="hero" id="main">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="hero-left">
+      <div class="hero-eyebrow">Accra, Ghana · Est. 2020</div>
+      <h1 class="hero-headline">
+        Inspiring<br/>
+        Confidence &<br/>
+        <em>Enhancing</em><br/>
+        Beauty
+      </h1>
+      <p class="hero-desc">
+        Luxury cruelty-free and vegan beauty products crafted for every skin type.
+        Discover collections that celebrate your natural radiance.
+      </p>
+      <div class="hero-actions">
+        <a href="shop/index.html" class="btn-primary">
+          Explore Collection
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#about" class="btn-ghost">Our Story</a>
+      </div>
+      <div class="hero-badges">
+        <div class="badge"><span class="badge-dot"></span>Cruelty Free</div>
+        <div class="badge"><span class="badge-dot"></span>100% Vegan</div>
+        <div class="badge"><span class="badge-dot"></span>Luxury Grade</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-visual">
+        <div class="hero-img-main"></div>
+        <div class="hero-float-card">
+          <div class="float-card-label">Happy Clients</div>
+          <div class="float-card-value">2,152+</div>
+          <div class="float-card-sub">Followers & counting</div>
+        </div>
+        <div class="hero-float-badge">
+          <strong>✦</strong>
+          Premium<br/>Beauty
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+  </section>
+
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker-track">
+      <div class="ticker-item"><span class="ticker-dot"></span>Cruelty Free</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>100% Vegan</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>East Legon, Accra</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Luxury Beauty</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Inspiring Confidence</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Enhancing Beauty</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>2,000+ Happy Clients</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Personal Care</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Cruelty Free</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>100% Vegan</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>East Legon, Accra</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Luxury Beauty</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Inspiring Confidence</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Enhancing Beauty</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>2,000+ Happy Clients</div>
+      <div class="ticker-item"><span class="ticker-dot"></span>Personal Care</div>
+    </div>
+  </div>
+
+  <section class="section about" id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label reveal">Our Story</div>
+        <h2 class="section-title reveal reveal-delay-1">Where Beauty Meets <em>Conscience</em></h2>
+        <p class="reveal reveal-delay-2">
+          Bliss Beauty Plus was founded with a singular vision — to make luxury beauty accessible to every woman in Ghana and beyond, without compromising on ethics or quality.
+        </p>
+        <p class="reveal reveal-delay-3">
+          Based in the heart of East Legon, Accra, we curate and offer premium cosmetics and personal care products that are 100% vegan, cruelty-free, and formulated to celebrate diverse skin tones and types.
+        </p>
+        <div class="pillars reveal reveal-delay-4">
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-9"/><path d="M4.2 10a9 9 0 0 0 15.6 0"/><path d="M12 13a5 5 0 0 0 5-5c0-3-2-5-5-5S7 5 7 8a5 5 0 0 0 5 5z"/></svg>
+            </div>
+            <div class="pillar-name">Vegan</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <div class="pillar-name">Cruelty Free</div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div class="pillar-name">Luxury</div>
+          </div>
+        </div>
+        <div class="about-stats reveal">
+          <div class="stat-card"><div class="stat-num">2K+</div><div class="stat-label">Followers</div></div>
+          <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">Vegan & Cruelty-Free</div></div>
+          <div class="stat-card"><div class="stat-num">70+</div><div class="stat-label">Brand Friends</div></div>
+          <div class="stat-card"><div class="stat-num">⭐⭐⭐⭐⭐</div><div class="stat-label">Client Satisfaction</div></div>
+        </div>
+      </div>
+      <div class="about-visual reveal">
+        <div class="about-img"></div>
+        <div class="about-accent"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section products" id="products">
+    <div class="products-header">
+      <div>
+        <div class="section-label reveal">Our Collections</div>
+        <h2 class="section-title reveal reveal-delay-1">Curated for <em>Radiance</em></h2>
+      </div>
+      <a href="shop/index.html" class="view-all reveal">View All <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <div class="product-img">
+          <div class="product-img-bg p1"></div>
+          <div class="product-img-label">Skincare</div>
+          <div class="product-overlay">
+            <p class="product-overlay-text">Nourish and protect with our premium vegan skincare range. Formulated for Ghana's climate.</p>
+            <a href="https://wa.me/233552394434" target="_blank" class="product-overlay-btn">Enquire via WhatsApp →</a>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Featured Collection</div>
+          <div class="product-name">Premium Skincare</div>
+          <div class="product-desc">Moisturisers, serums, toners & treatments — all vegan & cruelty-free.</div>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-1">
+        <div class="product-img">
+          <div class="product-img-bg p2"></div>
+          <div class="product-img-label">Makeup</div>
+          <div class="product-overlay">
+            <p class="product-overlay-text">Colour cosmetics that celebrate melanin-rich complexions and diverse skin tones.</p>
+            <a href="https://wa.me/233552394434" target="_blank" class="product-overlay-btn">Enquire via WhatsApp →</a>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Colour Cosmetics</div>
+          <div class="product-name">Luxury Makeup</div>
+          <div class="product-desc">Foundations, lip colours, eyeshadow palettes & more.</div>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-2">
+        <div class="product-img">
+          <div class="product-img-bg p3"></div>
+          <div class="product-img-label">Body</div>
+          <div class="product-overlay">
+            <p class="product-overlay-text">Indulgent body care essentials for a head-to-toe glow all day long.</p>
+            <a href="https://wa.me/233552394434" target="_blank" class="product-overlay-btn">Enquire via WhatsApp →</a>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Body Care</div>
+          <div class="product-name">Body Essentials</div>
+          <div class="product-desc">Butters, oils, scrubs, and lotions for luminous skin.</div>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-3">
+        <div class="product-img">
+          <div class="product-img-bg p4"></div>
+          <div class="product-img-label">Hair</div>
+          <div class="product-overlay">
+            <p class="product-overlay-text">Strengthen and beautify your natural hair with our curated hair care collection.</p>
+            <a href="https://wa.me/233552394434" target="_blank" class="product-overlay-btn">Enquire via WhatsApp →</a>
+          </div>
+        </div>
+        <div class="product-info">
+          <div class="product-category">Hair Care</div>
+          <div class="product-name">Hair Luxe</div>
+          <div class="product-desc">Treatments, oils, conditioners for healthy, defined hair.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section values" id="values">
+    <div class="section-label reveal">Why Bliss Beauty+</div>
+    <h2 class="section-title reveal reveal-delay-1">Our <em>Commitments</em><br/>to You</h2>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-num">01</div>
+        <div class="value-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-9"/><path d="M4.2 10a9 9 0 0 0 15.6 0"/><path d="M12 13a5 5 0 0 0 5-5c0-3-2-5-5-5S7 5 7 8a5 5 0 0 0 5 5z"/></svg></div>
+        <div class="value-title">100% Vegan</div>
+        <p class="value-text">Every product we carry is completely free of animal-derived ingredients. Beauty without compromise — for you and for the planet.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-1">
+        <div class="value-num">02</div>
+        <div class="value-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <div class="value-title">Cruelty-Free</div>
+        <p class="value-text">We stand firmly against animal testing. All our brands and products are certified cruelty-free. Kindness is beautiful.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-2">
+        <div class="value-num">03</div>
+        <div class="value-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="value-title">Luxury Quality</div>
+        <p class="value-text">We source only premium, high-performance formulas that deliver real results — because you deserve the very best.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section testimonials" id="testimonials">
+    <div class="section-label reveal">Happy Clients</div>
+    <h2 class="section-title reveal reveal-delay-1">What Our Community <em>Says</em></h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <div class="quote-mark">"</div>
+        <p class="testimonial-text">The skincare products I bought from Bliss Beauty Plus have completely transformed my routine. My skin has never felt better — soft, glowing, and healthy.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div><div class="author-name">Abena K.</div><div class="author-location">Accra, Ghana</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card featured reveal reveal-delay-1">
+        <div class="stars" style="color:var(--gold)">★★★★★</div>
+        <div class="quote-mark">"</div>
+        <p class="testimonial-text">I love that everything is vegan and cruelty-free. I can shop with a clear conscience knowing no animals were harmed. The products are also incredible quality!</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background:linear-gradient(135deg,var(--gold),var(--rose))">E</div>
+          <div><div class="author-name">Efua M.</div><div class="author-location">East Legon, Accra</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="stars">★★★★★</div>
+        <div class="quote-mark">"</div>
+        <p class="testimonial-text">Fast delivery, gorgeous packaging, and most importantly — products that actually work! Bliss Beauty Plus is my go-to for all my beauty needs now.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">S</div>
+          <div><div class="author-name">Selasie D.</div><div class="author-location">Legon, Accra</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-label reveal">Get In Touch</div>
+        <h2 class="section-title reveal reveal-delay-1">Let's Talk <em>Beauty</em></h2>
+        <p class="reveal reveal-delay-2" style="font-size:0.95rem;line-height:1.8;color:#4a3030;margin-bottom:48px;">
+          Have a question about our products? Want to place a custom order or enquire about wholesale? We'd love to hear from you. Reach out and we'll respond promptly.
+        </p>
+        <div class="contact-detail reveal">
+          <div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 9.8a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 2 0h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L6.09 7.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div>
+            <div class="contact-detail-label">Phone & WhatsApp</div>
+            <div class="contact-detail-value"><a href="tel:+233552394434">+233 552 394 434</a></div>
+          </div>
+        </div>
+        <div class="contact-detail reveal reveal-delay-1">
+          <div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="contact-detail-label">Our Store</div>
+            <div class="contact-detail-value">13 Mulberry Street, East Legon,<br/>Accra-Ghana</div>
+          </div>
+        </div>
+        <div class="contact-detail reveal reveal-delay-2">
+          <div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+          <div>
+            <div class="contact-detail-label">Instagram</div>
+            <div class="contact-detail-value"><a href="https://www.instagram.com/blissbeautyplus" target="_blank">@blissbeautyplus</a></div>
+          </div>
+        </div>
+        <div class="social-bar reveal">
+          <a href="https://www.instagram.com/blissbeautyplus" target="_blank" class="social-link" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://wa.me/233552394434" target="_blank" class="social-link" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+          <a href="tel:+233552394434" class="social-link" aria-label="Call"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127 1 .36 1.98.7 2.91a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.17-1.16a2 2 0 012.11-.45c.93.34 1.91.573 2.91.7A2 2 0 0122 16.92z"/></svg></a>
+        </div>
+      </div>
+      <div class="contact-form reveal reveal-delay-2">
+        <form onsubmit="handleFormSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" class="form-control" placeholder="Abena" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" class="form-control" placeholder="Mensah" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" class="form-control" placeholder="hello@example.com" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone / WhatsApp</label>
+            <input type="tel" id="phone" class="form-control" placeholder="+233 XXX XXX XXX" />
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" class="form-control" placeholder="Tell us what you're looking for..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">
+            Send Message
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p id="formSuccess" style="display:none;text-align:center;color:var(--rose);margin-top:16px;font-size:0.85rem;letter-spacing:0.06em;">✓ Message sent! We'll be in touch shortly.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div class="map-section">
+    <div class="map-embed">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.5152055095917!2d-0.16!3d5.63!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNcKwMzcnNDgiLjAiTiAwwrAwOSczNi4wIlc!5e0!3m2!1sen!2sgh!4v1614296000000!5m2!1sen!2sgh"
+        allowfullscreen=""
+        loading="lazy"
+        title="Bliss Beauty Plus Location — 13 Mulberry Street, East Legon, Accra">
+      </iframe>
+    </div>
+  </div>
+
+  <include src="partials/footer.html"></include>
+
+  <script>
+    const ring = document.getElementById('cursorRing');
+    const dot  = document.getElementById('cursorDot');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.transform  = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+    });
+    function animRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+      requestAnimationFrame(animRing);
+    }
+    animRing();
+
+    document.querySelectorAll('a, button, .product-card').forEach(el => {
+      el.addEventListener('mouseenter', () => { ring.style.width = '56px'; ring.style.height = '56px'; ring.style.borderColor = 'var(--wine)'; });
+      el.addEventListener('mouseleave', () => { ring.style.width = '36px'; ring.style.height = '36px'; ring.style.borderColor = 'var(--rose)'; });
+    });
+
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); });
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    function openMenu() { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''; }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const first = document.getElementById('firstName').value;
+      const last  = document.getElementById('lastName').value;
+      const msg   = document.getElementById('message').value;
+      const phone = document.getElementById('phone').value;
+      const text  = encodeURIComponent(`Hi Bliss Beauty Plus! My name is ${first} ${last}. ${msg}${phone ? ` Contact: ${phone}` : ''}`);
+      window.open(`https://wa.me/233552394434?text=${text}`, '_blank');
+      document.getElementById('formSuccess').style.display = 'block';
+      e.target.reset();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.style.opacity = 0;
+      requestAnimationFrame(() => {
+        document.body.style.transition = 'opacity 0.6s ease';
+        document.body.style.opacity = 1;
+      });
+    });
+  </script>
+</body>
+</html>

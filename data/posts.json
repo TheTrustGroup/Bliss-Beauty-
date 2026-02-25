@@ -1,0 +1,42 @@
+[
+  {
+    "slug": "summer-skincare-tips",
+    "title": "Summer Skincare Tips for Ghana's Climate",
+    "category": "Skincare",
+    "date": "February 20, 2026",
+    "dateShort": "Feb 20, 2026",
+    "excerpt": "How to keep your skin hydrated, protected and glowing through the hottest months — with vegan products that work.",
+    "body": "<p class=\"reveal\">Ghana's heat and humidity can be tough on skin — but with the right routine and vegan products, you can keep your complexion hydrated, protected and glowing all season.</p><h2 class=\"reveal\">1. Hydrate from within and on the surface</h2><p class=\"reveal\">Lightweight, non-comedogenic moisturisers work best. Look for formulas with hyaluronic acid and plant-based oils that absorb quickly without leaving a greasy film.</p><h2 class=\"reveal\">2. Sun protection is non-negotiable</h2><p class=\"reveal\">Use a broad-spectrum SPF every day, even when it's cloudy. Mineral sunscreens with zinc or titanium dioxide are gentle and effective for melanin-rich skin.</p><h2 class=\"reveal\">3. Simplify your routine in the heat</h2><p class=\"reveal\">Stick to cleanse, treat, moisturise and protect. Avoid heavy layers; let your skin breathe while still getting the actives it needs.</p><p class=\"reveal\">At Bliss Beauty Plus we stock a range of vegan, cruelty-free sunscreens and summer-friendly moisturisers. Visit our <a href=\"/shop/\" class=\"view-all\">shop</a> or message us on WhatsApp to find your match.</p>",
+    "related": ["vegan-makeup-routine", "natural-hair-care", "why-cruelty-free"]
+  },
+  {
+    "slug": "vegan-makeup-routine",
+    "title": "Building a Vegan Makeup Routine",
+    "category": "Makeup",
+    "date": "February 12, 2026",
+    "dateShort": "Feb 12, 2026",
+    "excerpt": "How to build a full routine with cruelty-free foundations, lip colours and eyeshadows that work for melanin-rich skin.",
+    "body": "<p class=\"reveal\">Switching to vegan makeup doesn't mean sacrificing performance. Here's how to build a full routine with cruelty-free foundations, lip colours and eyeshadows that work for melanin-rich skin.</p><p class=\"reveal\">Explore our <a href=\"/shop/\" class=\"view-all\">Shop</a> for curated vegan makeup.</p>",
+    "related": ["summer-skincare-tips", "natural-hair-care", "why-cruelty-free"]
+  },
+  {
+    "slug": "natural-hair-care",
+    "title": "Natural Hair Care: Oils & Treatments We Love",
+    "category": "Hair",
+    "date": "February 5, 2026",
+    "dateShort": "Feb 5, 2026",
+    "excerpt": "The best oils and treatments for natural hair — vegan, cruelty-free and chosen for definition, strength and shine.",
+    "body": "<p class=\"reveal\">The best oils and treatments for natural hair — vegan, cruelty-free and chosen for definition, strength and shine. See our <a href=\"/shop/\" class=\"view-all\">Hair Luxe</a> collection.</p>",
+    "related": ["summer-skincare-tips", "vegan-makeup-routine", "why-cruelty-free"]
+  },
+  {
+    "slug": "why-cruelty-free",
+    "title": "Why We Choose Cruelty-Free Beauty",
+    "category": "Values",
+    "date": "January 28, 2026",
+    "dateShort": "Jan 28, 2026",
+    "excerpt": "We stand firmly against animal testing. Every product we carry is certified cruelty-free.",
+    "body": "<p class=\"reveal\">We stand firmly against animal testing. Every product we carry is certified cruelty-free — because kindness is beautiful. Read more in our <a href=\"/#values\" class=\"view-all\">Values</a> section.</p>",
+    "related": ["summer-skincare-tips", "vegan-makeup-routine", "natural-hair-care"]
+  }
+]

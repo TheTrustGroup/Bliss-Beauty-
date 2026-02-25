@@ -1,0 +1,12 @@
+{
+  "name": "bliss-beauty-plus",
+  "version": "1.0.0",
+  "description": "Bliss Beauty Plus — vegan and cruelty-free beauty, East Legon Accra",
+  "private": true,
+  "scripts": {
+    "build": "node build.js",
+    "dev": "npm run build && npm run serve",
+    "serve": "node -e \"require('http').createServer((q,s)=>{require('fs').createReadStream('dist'+require('url').parse(q.url).pathname.replace(/^\\/$/,'/index.html')).on('error',()=>{s.writeHead(404);s.end()}).pipe(s)}).listen(8080,()=>console.log('http://localhost:8080'))\""
+  },
+  "devDependencies": {}
+}
